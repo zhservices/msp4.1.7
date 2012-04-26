@@ -365,7 +365,7 @@ function arPostSession($payer_id,$check_number,$check_date,$pay_total,$post_to_d
     $query = "INSERT INTO ar_activity ( " .
       "pid, encounter, code, modifier, payer_type, post_user, post_time, " .
       "session_id, memo, adj_amount " .
-      "ded_amount,grp_code,rsn_code) VALUES ( " .
+      ",ded_amount,grp_code,rsn_code) VALUES ( " .
       "'$patient_id', " .
       "'$encounter_id', " .
       "'$codeonly', " .
