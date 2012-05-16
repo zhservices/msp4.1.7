@@ -273,7 +273,7 @@ class Claim {
   
   $arr=array();
   while($row=sqlFetcharray($rs_chg)){
-  $code_mod=$row['code'].$row['modifier'];
+  $code_mod=$row['modifier'] ? $row['code'].":".$row['modifier'] : $row['code'];
   $arr[$code_mod]['code'] =$row['code'];
   $arr[$code_mod]['modifier'] =$row['modifier'];
   $arr[$code_mod]['units'] +=$row['units'];
@@ -287,7 +287,7 @@ class Claim {
   $total_pat_resp +=$row['ded_amount'];
   }
   
-  $code_mod=$row['code'].$row['modifier'];
+  $code_mod=$row['modifier'] ? $row['code'].":".$row['modifier'] : $row['code'];
   $arr[$code_mod]['pmnt'][]=$row;
   }
   $arr['totalpaid']=$total_paid;
