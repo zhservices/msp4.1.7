@@ -141,3 +141,7 @@ INSERT INTO list_options ( list_id, option_id, title, seq ) VALUES ('payment_gro
 INSERT INTO list_options ( list_id, option_id, title, seq ) VALUES ('payment_group_codes', 'PI', 'PI', 30);
 INSERT INTO list_options ( list_id, option_id, title, seq ) VALUES ('payment_group_codes', 'PR', 'PR ', 20);
 #EndIf
+
+#IfMissingColumn payment_screen ar_session
+ALTER TABLE `ar_session` ADD COLUMN `payment_screen` TINYINT DEFAULT '0' NULL COMMENT '0=>ZH,1=>OpenEMR,10=>msp';
+#EndIf

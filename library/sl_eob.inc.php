@@ -376,7 +376,7 @@ function arPostSession($payer_id,$check_number,$check_date,$pay_total,$post_to_d
       "'$session_id', " .
       "'$reason', " .
       "'$amount', " .
-      "$deductible,'$grpcode','$reasoncode')";
+      "'$deductible','$grpcode','$reasoncode')";
     sqlStatement($query);
     return;
   }

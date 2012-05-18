@@ -4902,6 +4902,7 @@ CREATE TABLE ar_session (
   post_to_date date NOT NULL ,
   patient_id int( 11 ) NOT NULL ,
   payment_method varchar( 25 ) NOT NULL,
+  payment_screen TINYINT DEFAULT '0' NULL COMMENT '0=>ZH,1=>OpenEMR,10=>msp',
   PRIMARY KEY (session_id),
   KEY user_closed (user_id, closed),
   KEY deposit_date (deposit_date)

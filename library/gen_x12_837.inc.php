@@ -12,12 +12,11 @@ function stripZipCode($zip)
     return str_replace('-','',$zip);
 }
 function gen_x12_837($pid, $encounter, &$log, $encounter_claim=false) {
-$medicaresec=$GLOBALS['msp_capturing_payment_screen'];
   $today = time();
   $out = '';
   $claim = new Claim($pid, $encounter);
   $edicount = 0;
-
+  $medicaresec=($claim->payers[0]['data']['msp_category'] && $claim->claimType(1)==="MB") ? true : false;
   // This is true for the 5010 standard, false for 4010.
   // x12gsversionstring() should be "005010X222A1" or "004010X098A1".
   $CMS_5010 = strpos($claim->x12gsversionstring(), '5010') !== false;

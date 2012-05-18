@@ -258,7 +258,7 @@ class Claim {
   
   function payerAdjustments($ins,$code='Claim')
   {
-  if($GLOBALS['msp_capturing_payment_screen'])
+  if($this->payers[0]['data']['msp_category'] && $claim->claimType(1)==="MB")
   {
   //presently only handling secondary claims no tertiary hence hard_coded payer_type=1 ie payment received from primary
   $rs_chg=sqlStatement("select * from billing where encounter=? and activity=1 and code_type in('CPT4','HCPCS')",array($this->encounter_id));
@@ -763,7 +763,7 @@ class Claim {
 
   function insuredTypeCode($ins=0) {
     if (strcmp($this->claimType($ins),'MB') == 0 && $this->payerSequence($ins) != 'P'){
-    	  if($GLOBALS['msp_capturing_payment_screen'])
+    	  if($this->payers[0]['data']['msp_category'] && $claim->claimType(1)==="MB")
 		  return $this->payers[1]['data']['msp_category'];//ZH Eldho 
 		  else
 		  return '12'; // medicare secondary working aged beneficiary or
